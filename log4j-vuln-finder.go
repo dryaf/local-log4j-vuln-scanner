@@ -117,6 +117,10 @@ func main() {
 	}
 	for _, root := range os.Args[1:] {
 		filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+			if info == nil {
+				fmt.Printf("can't get fileinfo %s\n", path)
+				return nil
+			}
 			if info.IsDir() {
 				return nil
 			}
@@ -124,17 +128,17 @@ func main() {
 			case ".jar", ".war", ".ear":
 				f, err := os.Open(path)
 				if err != nil {
-					fmt.Printf("can't open %s: %v", path, err)
+					fmt.Printf("can't open %s: %v\n", path, err)
 					return nil
 				}
 				defer f.Close()
 				sz, err := f.Seek(0, os.SEEK_END)
 				if err != nil {
-					fmt.Printf("can't seek in %s: %v", path, err)
+					fmt.Printf("can't seek in %s: %v\n", path, err)
 					return nil
 				}
 				if _, err := f.Seek(0, os.SEEK_END); err != nil {
-					fmt.Printf("can't seek in %s: %v", path, err)
+					fmt.Printf("can't seek in %s: %v\n", path, err)
 					return nil
 				}
 				handleJar(path, f, sz)

@@ -1,0 +1,2 @@
+git checkout -b merge
+git pull https://github.com/hillu/local-log4j-vuln-scanner.git master

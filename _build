@@ -1,3 +1,4 @@
+rm bin/*
 env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/log4jscan_linux64
 env CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -o bin/log4jscan_linux32
 env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o bin/log4jscan_win64.exe

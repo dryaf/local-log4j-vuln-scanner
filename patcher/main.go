@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/hillu/local-log4j-vuln-scanner/filter"
+	"github.com/dryaf/local-log4j-vuln-scanner/filter"
 
 	"archive/zip"
 	"bytes"
